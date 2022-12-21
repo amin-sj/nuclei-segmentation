@@ -27,3 +27,16 @@ Preprocessing contained of 5 stages:
 * Modifying provided ground truth: to infer nuclei markers i moidified the ground truth. an example of this procedure is shown in figure below.
 
 <img width="736" alt="image" src="https://user-images.githubusercontent.com/91489940/208904347-05f6f021-a252-41bf-925e-06a1aea4a061.png">
+
+### 2.2 Model
+
+<img width="549" alt="image" src="https://user-images.githubusercontent.com/91489940/208905672-f6d4e284-b696-4f93-8ed0-70ce5439c9fa.png">
+
+I used the above model for training which is a Double U-Net proposed by Jha et al. added by another U-Net for segmenting nuclei markers, the added U-Net structure is exactly like the second network of Double U-Net for more information please refer to the original paper. Here, we have 2 outputs, output 1 will give us the binary mask and output 2 will predict the inner part of nuclei, nuclei boundaries and backgroud as modified masks.
+
+### 2.3 Postprocessing
+Preprocessing contained of 4 stages:
+* Extracting nuclei markers: after getting output 2, to have better masks for nuceli markers, nuceli boundaries subtracted from inner nuclei prediction and morphological erosion applied to obtain better distinction between markers.
+* watershed algorithm: after obtaining nuclei markers watershed algorithm used to perform region growing and segmenting overlapping nuclei by using nuclei binary masks gradient and nuclei markers as seed points. 
+* remove very small objects
+* fill holes in detected objects
