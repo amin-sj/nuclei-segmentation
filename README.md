@@ -16,17 +16,17 @@ One of the classical ways to segment individual nuclei is to use distance transf
 
 ### 2.1 Preprocessing
 Preprocessing contained of 5 stages:
-* Stain normalization: which is common technique in analysis of H&E stained images. Although in deep learning a model expected to learn diffrent color distributions but in nuclei segmentation task due to the limited availibility of supervised datasets it is a necessary step. for selecting reference image, i used mahbod et al. method which was to convert all the training images to grayscale and use the image in which nuclei and background histograms are most differnet.
+* Stain normalization: which is common technique in analysis of H&E stained images. Although in deep learning a model expected to learn diffrent color distributions but in nuclei segmentation task due to the limited availibility of supervised datasets it is a necessary step. for selecting reference image, i used [mahbod et al.](https://www.researchgate.net/publication/334185970_A_Two-Stage_U-Net_Algorithm_for_Segmentation_of_Nuclei_in_HE-Stained_Tissues?enrichId=rgreq-9852310c5ddf99bcfd9c12154b524a03-XXX&enrichSource=Y292ZXJQYWdlOzMzNDE4NTk3MDtBUzo3NzgzNTQ2MTc3NTc2OTlAMTU2MjU4NTYxMDU0Ng%3D%3D&el=1_x_3&_esc=publicationCoverPdf) method which was to convert all the training images to grayscale and use the image in which nuclei and background histograms are most differnet.
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/91489940/208901677-15f3cad7-dad1-40e8-b96a-a934e6e8c602.png">
 
-* Data augmentation: i used following transforms from alubumentations library. 
+* Data augmentation: i used following transforms from [alubumentations](https://github.com/albumentations-team/albumentations) library. 
 
 <img width="486" alt="image" src="https://user-images.githubusercontent.com/91489940/208902628-1ec8c5ac-1b0b-4af2-803b-da50cb8d9219.png">
 
 * Tissue images resized to 1024 * 1024
 * Pixel values normalized between [0, 1]
-* Modifying provided ground truth: to infer nuclei markers i moidified the ground truth. an example of this procedure is shown in figure below.
+* Modifying provided ground truth: to infer nuclei markers i moidified the provided ground truth. an example of this procedure is shown in figure below.
 
 <img width="736" alt="image" src="https://user-images.githubusercontent.com/91489940/208904347-05f6f021-a252-41bf-925e-06a1aea4a061.png">
 
@@ -34,7 +34,7 @@ Preprocessing contained of 5 stages:
 
 <img width="549" alt="image" src="https://user-images.githubusercontent.com/91489940/208905672-f6d4e284-b696-4f93-8ed0-70ce5439c9fa.png">
 
-I used the above model for training which is a Double U-Net proposed by Jha et al. added by another U-Net for segmenting nuclei markers, the added U-Net structure is exactly like the second network of Double U-Net for more information please refer to the original paper. Here, we have 2 outputs, output 1 will give us the binary mask and output 2 will predict the inner part of nuclei, nuclei boundaries and backgroud as modified masks.
+I used the above model for training which is a [Double U-Net](https://www.researchgate.net/publication/344051841_DoubleU-Net_A_Deep_Convolutional_Neural_Network_for_Medical_Image_Segmentation) proposed by Jha et al. added by another U-Net for segmenting nuclei markers, the added U-Net structure is exactly like the second network of Double U-Net for more information please refer to the original paper. Here, we have 2 outputs, output 1 will give us the binary mask and output 2 will predict the inner part of nuclei, nuclei boundaries and backgroud as modified masks.
 
 ### 2.3 Postprocessing
 Preprocessing contained of 4 stages:
