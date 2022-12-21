@@ -8,7 +8,7 @@ I used MoNuSeg dataset, which is one of the biggest public datasets for the nucl
 
 ## 2. Method
 I wanted to use a U-Net like architecture but nuclei segmentation is an instance segmentation task, so more information should be extracted from the tissue images in order to segment individual nuclei.
-One of the classical ways to segment individual nuclei is to use distance transform of the nuclei binary mask and extract local maxima coordinates followed by watershed algorithm to implement region growing and specify the "dams" between overlapping nuclei, so i decided to infer nuclei markers by training a model as well as their binary masks. This way there is no need to manually set a threshold for minimum distance of the distance map or kernel size for smoothing the distance map because otherwise the image will be over-segmented. 
+One of the classical ways to segment individual nuclei is to use distance transform of the nuclei binary mask and extract local maxima coordinates followed by watershed algorithm to perform region growing and specify the "dams" between overlapping nuclei, so i decided to infer nuclei markers by training a model as well as their binary masks. This way there is no need to manually set a threshold for minimum distance of the distance map or kernel size for smoothing the distance map because otherwise the image will be over-segmented. 
 
 <img width="492" alt="image" src="https://user-images.githubusercontent.com/91489940/208902034-9874520e-fbfe-4c60-b31e-d2fb6f66f897.png">
 
