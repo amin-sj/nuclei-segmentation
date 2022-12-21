@@ -12,6 +12,8 @@ One of the classical ways to segment individual nuclei is to use distance transf
 
 <img width="492" alt="image" src="https://user-images.githubusercontent.com/91489940/208902034-9874520e-fbfe-4c60-b31e-d2fb6f66f897.png">
 
+<img width="661" alt="image" src="https://user-images.githubusercontent.com/91489940/208912438-c0ebfce1-2fe2-46c5-a286-8f28e98bd6d0.png">
+
 ### 2.1 Preprocessing
 Preprocessing contained of 5 stages:
 * Stain normalization: which is common technique in analysis of H&E stained images. Although in deep learning a model expected to learn diffrent color distributions but in nuclei segmentation task due to the limited availibility of supervised datasets it is a necessary step. for selecting reference image, i used mahbod et al. method which was to convert all the training images to grayscale and use the image in which nuclei and background histograms are most differnet.
