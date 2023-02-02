@@ -8,7 +8,7 @@ We used [MoNuSeg](https://ieeexplore.ieee.org/document/8880654) dataset, which i
 
 ## 2. Method
 We wanted to use a U-Net like architecture but nuclei segmentation is an instance segmentation task, so more information should be extracted from the tissue images in order to segment individual nuclei.
-One of the classical ways to segment individual nuclei is to use distance transform of the nuclei binary mask and extract local maxima coordinates followed by watershed algorithm to perform region growing and specify the "dams" between overlapping nuclei, so i decided to infer nuclei markers by training a model as well as their binary masks. This way there is no need to manually set a threshold for minimum distance of the distance map or kernel size for smoothing the distance map because otherwise the image will be over-segmented. 
+One of the classical ways to segment individual nuclei is to use distance transform of the nuclei binary mask and extract local maxima coordinates followed by watershed algorithm to perform region growing and specify the "dams" between overlapping nuclei, so we decided to infer nuclei markers by training a model as well as their binary masks. This way there is no need to manually set a threshold for minimum distance of the distance map or kernel size for smoothing the distance map because otherwise the image will be over-segmented. 
 
 <img width="492" alt="image" src="https://user-images.githubusercontent.com/91489940/208902034-9874520e-fbfe-4c60-b31e-d2fb6f66f897.png">
 
@@ -16,11 +16,11 @@ One of the classical ways to segment individual nuclei is to use distance transf
 
 ### 2.1 Preprocessing
 Preprocessing contained of 5 stages:
-* Stain normalization: which is common technique in analysis of H&E stained images. Although in deep learning a model expected to learn diffrent color distributions but in nuclei segmentation task due to the limited availibility of supervised datasets it is a necessary step. for selecting reference image, i used [mahbod et al.](https://www.researchgate.net/publication/334185970_A_Two-Stage_U-Net_Algorithm_for_Segmentation_of_Nuclei_in_HE-Stained_Tissues?enrichId=rgreq-9852310c5ddf99bcfd9c12154b524a03-XXX&enrichSource=Y292ZXJQYWdlOzMzNDE4NTk3MDtBUzo3NzgzNTQ2MTc3NTc2OTlAMTU2MjU4NTYxMDU0Ng%3D%3D&el=1_x_3&_esc=publicationCoverPdf) method which was to convert all the training images to grayscale and use the image in which nuclei and background histograms are most differnet.
+* Stain normalization: which is common technique in analysis of H&E stained images. Although in deep learning a model expected to learn diffrent color distributions but in nuclei segmentation task due to the limited availibility of supervised datasets it is a necessary step. for selecting reference image, we used [mahbod et al.](https://www.researchgate.net/publication/334185970_A_Two-Stage_U-Net_Algorithm_for_Segmentation_of_Nuclei_in_HE-Stained_Tissues?enrichId=rgreq-9852310c5ddf99bcfd9c12154b524a03-XXX&enrichSource=Y292ZXJQYWdlOzMzNDE4NTk3MDtBUzo3NzgzNTQ2MTc3NTc2OTlAMTU2MjU4NTYxMDU0Ng%3D%3D&el=1_x_3&_esc=publicationCoverPdf) method which was to convert all the training images to grayscale and use the image in which nuclei and background histograms are most differnet.
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/91489940/208901677-15f3cad7-dad1-40e8-b96a-a934e6e8c602.png">
 
-* Data augmentation: i used following transforms from [alubumentations](https://github.com/albumentations-team/albumentations) library. 
+* Data augmentation: we used following transforms from [alubumentations](https://github.com/albumentations-team/albumentations) library. 
 
 <img width="486" alt="image" src="https://user-images.githubusercontent.com/91489940/208902628-1ec8c5ac-1b0b-4af2-803b-da50cb8d9219.png">
 
