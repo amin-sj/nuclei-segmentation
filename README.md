@@ -2,7 +2,7 @@
 This repository contains deep learning method for nuclei segmentation task.
 
 ## 1. Dataset
-We used [MoNuSeg](https://ieeexplore.ieee.org/document/8880654) dataset, which is one of the biggest public datasets for the nuclei segmentation task and contains 44 H&E stained tissue images from 9 various organs with the resolution of 1000 * 1000.
+We used [MoNuSeg](https://monuseg.grand-challenge.org/Data/) dataset, which is one of the biggest public datasets for the nuclei segmentation task and contains 44 H&E stained tissue images from 9 various organs with the resolution of 1000 * 1000.
 
 <img width="731" alt="image" src="https://user-images.githubusercontent.com/91489940/208888673-cda0414c-2423-4264-96a2-03207621772b.png">
 
