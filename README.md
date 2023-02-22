@@ -11,7 +11,7 @@ We wanted to use a U-Net-like architecture, but nuclei segmentation is an instan
 
 <img width="492" alt="image" src="https://user-images.githubusercontent.com/91489940/208902034-9874520e-fbfe-4c60-b31e-d2fb6f66f897.png">
 
-<img width="661" alt="image" src="https://user-images.githubusercontent.com/91489940/208912438-c0ebfce1-2fe2-46c5-a286-8f28e98bd6d0.png">
+<img width="495" alt="image" src="https://user-images.githubusercontent.com/91489940/220624962-07971354-8759-4c21-84ea-2bbfdf070d45.png">
 
 ### 2.1 Preprocessing
 Preprocessing contained five stages:
@@ -55,13 +55,14 @@ Postprocessing contained four stages:
 ## 3. Results
 For evaluation, we performed 5-fold cross-validation. We used three metrics of AJI, PQ, and DICE, where AJI and PQ are sensitive to both semantic and instance segmentation performance, and DICE is sensitive to semantic segmentation performance. Also, we included the results of U-Net without adding the second decoder to measure the impact of adding another decoder unit and extracting nuclei markers information as well as binary masks for nuclei segmentation.
 
-<img width="525" alt="image" src="https://user-images.githubusercontent.com/91489940/216344382-36c3e755-e078-4455-a84d-4bc76353f85f.png">
+<img width="646" alt="image" src="https://user-images.githubusercontent.com/91489940/220625830-21f903d9-3380-4fe6-9d9d-05a996a7cccc.png">
 
-After performing cross-validation, we train the models on the whole training set to get the final results of the models on the monuseg test set.
+After performing cross-validation, to evaluate the generalization ability of the models and compare our method with algorithms proposed in the monuseg2018 challenge, we train the models on the whole training set to get the final results of the models on the monuseg test set.
 
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/91489940/216349402-0a7c18d2-e8dd-43b0-ab8c-abfac581e2bb.png">
 
-From the above tables, it is evident that nuclei marker extraction improves the model's ability to separate nuclei (as evidenced by improved PQ and AJI scores) while not significantly impacting overall semantic segmentation performance (expressed by the average DICE score). Among the other four models used in the research, Double U-Net has performed better in AJI and PQ scores, but there is no significant change in the cross-validation scores.
+<img width="654" alt="image" src="https://user-images.githubusercontent.com/91489940/220626460-7cda36a9-ec81-4c5d-9e76-10c9bb13f213.png">
+
+From the above tables, it is evident that nuclear marker extraction improves the model's ability to differentiate nuclei, as evidenced by improved PQ and AJI scores compared to the raw U-Net. However, it does not considerably impact the general semantic segmentation performance, as expressed by the mean DICE score. Among the other four models used in the research that employed the proposed method, Double U-Net exhibited the highest average scores of AJI and PQ. To further analyze the performance of these four models, a one-way ANOVA test was conducted, which did not reveal a significant statistical difference. Consequently, when using the pre-trained VGG-19 as an encoder for U-Net, U Net ++, U-Net 3+, and Double U-Net networks, these networks show similar performance on the MoNuSeg dataset.
 
 #### Qualitative results on different organs of the monuseg test dataset
-![image](https://user-images.githubusercontent.com/91489940/216361294-07f15dc8-c321-48ac-bc8b-633c5a587f69.png)
