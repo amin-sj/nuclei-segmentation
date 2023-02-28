@@ -53,7 +53,7 @@ Postprocessing contained four stages:
 * Fill holes in detected objects
 
 ## 3. Results
-For evaluation, we performed 5-fold cross-validation. Table below show the cross-validation rrsults in terms of AJI, PQ, DQ/F1, SQ, and DICE, where AJI and PQ are sensitive to both semantic and instance segmentation performance, and DICE is sensitive to semantic segmentation performance. Also, we included the results of U-Net without adding the second decoder to measure the impact of adding another decoder unit and extracting nuclei markers information as well as binary masks for nuclei segmentation.
+For evaluation, we performed 5-fold cross-validation. The table below shows the cross-validation results in terms of AJI, PQ, DQ/F1, SQ, and DICE, where AJI and PQ are sensitive to both semantic and instance segmentation performance, and DICE is sensitive to semantic segmentation performance. Also, we included the results of U-Net without adding the second decoder to measure the impact of adding another decoder unit and extracting nuclei markers information as well as binary masks for nuclei segmentation.
 
 <!-- <img width="646" alt="image" src="https://user-images.githubusercontent.com/91489940/220625830-21f903d9-3380-4fe6-9d9d-05a996a7cccc.png"> -->
 <img width="281" alt="image" src="https://user-images.githubusercontent.com/91489940/221874167-76c93fb5-72c7-490a-80ae-26339d673dce.png">
